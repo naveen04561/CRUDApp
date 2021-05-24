@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>List of Users</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container" >
+	<h1 style="text-align: center;" > List of Users </h1>
+	 <table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">Name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Phone</th>
+			  <th scope="col">Gender</th>
+		      <th scope="col">Options</th>
+		    </tr>
+		  </thead>
+		  <%  users.forEach(function(user){ %>
+		  <tbody>
+		    <tr>
+		      <th scope="row"><%= user.name %></th>
+		      <td><%= user.email %></td>
+		      <td><%= user.phone %></td>
+			  <td><%= user.gender %></td>
+		      <td>
+		      <div class="row">
+		      	<div class="col-sm-6">
+		      		<form action="/edituser/<%=user._id%>" method="GET">
+	      			<!-- <input type="hidden" name="id" value=""> -->
+	      			<button type="submit" id="" class="btn btn-warning">Edit</button>
+	      	    </form>
+		      	</div>
+		      	<div class="col-sm-6" >
+		      		<form action="/deleteuser/<%=user._id%>" method="POST">
+	      	    	<!-- <input type="hidden" name="id" value=""> -->
+	      			<button type="submit" name="" class="btn btn-danger">Delete</button>
+	      	    </form> 
+		      	</div>
+		      </div>
+	      		<br>
+	      	</td>
+		   </tr>
+		 </tbody>
+		 <% }) %>
+		</table>
+	</div>
+	 
+	<div class="container" style="padding: 1% 26%;">
+			<form action="adduser" method="get">
+				<button name="" type="submit" class="btn btn-primary">Add a new user</button>
+			</form>
+	</div>
+</body>
+</html>
